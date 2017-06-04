@@ -6,6 +6,8 @@ val x = 34;
 
 val y = 17;
 (* Static environment: x : int, y : int *)
+
+
 (* Dynamic environment: x--> 17 *)
 
 val z = (x + y ) + (y + 2);
@@ -30,5 +32,14 @@ Syntax:
 
 Type-checking: 
   - First e1 must be type bool
-  - e2 and e3 can have any type (letletss  , but they must have the same type.
-  - 
+  - e2 and e3 can have any type (lets say type t)  , but they must have the same type.
+  - the type of the entire expression will also be t
+  
+Evaluation rules: 
+  - first e1 is evaluated to value, say v1
+  - if v1 is true the evaluate e2 and thats the result of the whole expression
+  - else evaluate e3 and thats the result of the whole expression
+*)
+
+(* Shadowing*)
+(* Multiple bindings of the same variable *)
