@@ -43,3 +43,23 @@ Evaluation rules:
 
 (* Shadowing*)
 (* Multiple bindings of the same variable *)
+
+val a = 10;
+(* a:int, a->10 *)
+
+val b = a * 2;
+(* a:int, b:int, a->10, b->20 *)
+
+val a = 5; (* this is not an assignment statement*)
+(*  a cannot be mutated, this is a differet a in a different dynamic environment *)
+(* a-5, b->20 *)
+
+val d = a;
+
+(* ... d->5 *)
+
+val a = a + 1;
+(* ...,  a->6 *)
+
+val f = a * 2;
+(* ..., f->12 *)
