@@ -17,7 +17,14 @@ fun countDown (x: int) = (* [7,6,5,4,3,2,1] *)
   then []
   else x :: countDown(x-1)
 
-fun append(xs: int list, ys: int list) =
+fun append (xs: int list, ys: int list) =
   if null xs
   then ys
-  else hd(xs) :: append(tl(xs), ys)
+  else hd(xs) :: append((tl xs),ys)
+
+(* Functions over pairs of lists *)
+
+fun sum_pair_list (xs: (int * int) list) =
+  if null xs
+  then 0
+  else #1 (hd xs) + #2 (hd xs) + sum_pair_list(tl xs)
