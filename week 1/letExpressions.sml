@@ -6,7 +6,7 @@ fun silly1(z: int) =
       if x > y then x * 2 else y * y
   end
 
-fun sill2() =
+fun silly2() =
   let
       val x = 1
   in

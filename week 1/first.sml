@@ -30,12 +30,12 @@ Syntax:
   where if, then, else are keywords and
   e1, e2 and e3 are subexpressions.
 
-Type-checking: 
+Type-checking:
   - First e1 must be type bool
   - e2 and e3 can have any type (lets say type t)  , but they must have the same type.
   - the type of the entire expression will also be t
-  
-Evaluation rules: 
+
+Evaluation rules:
   - first e1 is evaluated to value, say v1
   - if v1 is true the evaluate e2 and thats the result of the whole expression
   - else evaluate e3 and thats the result of the whole expression
