@@ -12,3 +12,19 @@ fun max (xs: int list) =
 	  then hd xs
 	  else tl_ans
       end
+
+(* 
+
+options is a different type
+- options are not lists
+- lists are not options
+
+Building =>
+
+NONE: holds zero items same as [] 
+SOME: much like creating a one element list
+
+isSome: takes in an options and returns true for some and false for none 
+valOf: takes and option and get it out of some, if its given a none it throws exception
+
+  *)
