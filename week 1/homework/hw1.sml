@@ -26,5 +26,24 @@ Write a function dates_in_month that takes a list of dates and a month (i.e., an
 - The returned list should contain dates in the order they were originally given.
 *)
 
-fun dates_in_month (dates: (int * int * int) list, month int)=
-  
+fun dates_in_month (dates: (int * int * int) list, month: int)=   
+  if null dates
+  then []
+  else if (#2 (hd dates))=month
+  then hd dates :: dates_in_month(tl dates, month)
+  else dates_in_month(tl dates, month)
+
+(*
+Write a function dates_in_months that takes a list of dates and a list of months 
+(i.e., an int list)
+ - returns a list holding the dates from the argument list of dates that are in any
+of the months in the list of months. 
+ - Assume the list of months has no number repeated. Hint: Use your answer to the
+previous problem and SML’s list-append operator (@).
+*)
+
+
+fun dates_in_months (dates: (int * int * int) list, months: int list)=
+  if null months
+  then []
+  else dats_in_month(dates, hd months) @ dates_in_months(dates, tl months)
