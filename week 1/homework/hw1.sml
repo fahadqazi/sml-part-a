@@ -46,4 +46,18 @@ previous problem and SML’s list-append operator (@).
 fun dates_in_months (dates: (int * int * int) list, months: int list)=
   if null months
   then []
-  else dats_in_month(dates, hd months) @ dates_in_months(dates, tl months)
+  else dates_in_month(dates, hd months) @ dates_in_months(dates, tl months)
+
+
+fun countup (from: int, to: int)=
+  if from=to
+  then to::[]
+  else from :: countup(from + 1, to)
+
+fun add (array: int list)=
+  hd array + add(tl array)
+
+fun addFix(array: int list)=
+  if null (tl array)
+  then hd array
+  else hd array + addFix(tl array)
