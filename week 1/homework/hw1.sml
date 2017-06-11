@@ -1,4 +1,4 @@
-fun is_older (pr1: int*int*int, pr2: int*int*int)=
+ fun is_older (pr1: int*int*int, pr2: int*int*int)=
   if (#1 pr1) < (#1 pr2)
   then true
   else if (#2 pr1) < (#2 pr2)
@@ -19,16 +19,12 @@ fun number_in_months (dates: (int * int * int) list, months: int list)=
   if null months
   then 0
   else number_in_month(dates, hd months) + number_in_months(dates, tl months)
-
+ 
 (*
-Write a function dates_in_month that takes a list of dates and a month (i.e., an int)
- - Returns a list holding the dates from the argument list of dates that are in the month. 
- - The returned list should contain dates in the order they were originally given.
-*)		      
+Write a function dates_in_month that takes a list of dates and a month (i.e., an int) 
+-  returns a list holding the dates from the argument list of dates that are in the month. 
+- The returned list should contain dates in the order they were originally given.
+*)
 
-fun dates_in_month (dates: (int * int * int) list, month: int)=
-  if null dates
-  then []
-  else if  #2 (hd dates) = month
-  then hd dates::[]
-  else []:: dates_in_month(tl dates, month);
+fun dates_in_month (dates: (int * int * int) list, month int)=
+  
