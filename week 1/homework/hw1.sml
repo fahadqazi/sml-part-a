@@ -19,13 +19,8 @@ fun number_in_months (dates: (int * int * int) list, months: int list)=
   if null months
   then 0
   else number_in_month(dates, hd months) + number_in_months(dates, tl months)
- 
-(*
-Write a function dates_in_month that takes a list of dates and a month (i.e., an int) 
--  returns a list holding the dates from the argument list of dates that are in the month. 
-- The returned list should contain dates in the order they were originally given.
-*)
 
+							   
 fun dates_in_month (dates: (int * int * int) list, month: int)=   
   if null dates
   then []
@@ -33,31 +28,18 @@ fun dates_in_month (dates: (int * int * int) list, month: int)=
   then hd dates :: dates_in_month(tl dates, month)
   else dates_in_month(tl dates, month)
 
-(*
-Write a function dates_in_months that takes a list of dates and a list of months 
-(i.e., an int list)
- - returns a list holding the dates from the argument list of dates that are in any
-of the months in the list of months. 
- - Assume the list of months has no number repeated. Hint: Use your answer to the
-previous problem and SML’s list-append operator (@).
-*)
-
 
 fun dates_in_months (dates: (int * int * int) list, months: int list)=
   if null months
   then []
   else dates_in_month(dates, hd months) @ dates_in_months(dates, tl months)
 
+							 
+fun get_nth (strings: string list, n: int)=
+  if n = 1 then hd strings
+  else get_nth(tl strings, n -1 )
 
-fun countup (from: int, to: int)=
-  if from=to
-  then to::[]
-  else from :: countup(from + 1, to)
-
-fun add (array: int list)=
-  hd array + add(tl array)
-
-fun addFix(array: int list)=
-  if null (tl array)
-  then hd array
-  else hd array + addFix(tl array)
+fun date_to_string (date: (int * int * int))=
+  let val months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September"," October", "November", "December"]
+  in get_nth(months, #2 date) ^ " " ^ Int.toString(#3 date) ^ ", " ^ Int.toString(#1 date) 
+  end
