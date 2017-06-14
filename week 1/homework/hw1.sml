@@ -1,17 +1,13 @@
 (* 1. Write a function is_older that takes two dates and evaluates to true or false.
  It evaluates to true if the first argument is a date that comes before the second argument.
  (If the two dates are the same, the result is false.) *)
- fun is_older (date_1 : (int * int * int), date_2 : (int * int * int)) =
-   if date_1 = date_2 then false
-   else if #1 date_1 < #1 date_2
-   then true
-   else if #1 date_1 > #1 date_2
-   then false
-   else if #2 date_1 < #2 date_2
-   then true
-   else if #2 date_1 > #2 date_2
-   then false
-   else #3 date_1 < #3 date_2
+
+fun converter(date: (int * int * int))=
+  Int.toString(#1 date) ^ Int.toString(#2 date) ^ Int.toString(#3 date)
+  
+fun is_older (date1, date2)=
+  if converter(date1) < converter(date2) then true
+  else false
 	   
 
 (* 2. Write a function number_in_month that takes a list of dates and a month
@@ -130,16 +126,16 @@ fun oldest (dates: (int * int * int) list)=
   if null dates
   then NONE
   else
-      let fun oldes_helper(dates: (int * int * int) list)=
+      let fun older_helper(dates: (int * int * int) list)=
 	    if null (tl dates) then hd dates
 	    else
-		let val tl_ans = tl_ans(tl dates)
+		let val tl_ans = older_helper(tl dates)
 		in
 		    if is_older(hd dates, tl_ans)
 		    then hd dates
 		    else tl_ans
 		end
       in
-	  SOME(oldes_helper(dates))
+	  SOME(older_helper(dates))
       end
 	  
